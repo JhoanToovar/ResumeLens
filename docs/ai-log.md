@@ -1,0 +1,2 @@
+| 2026-10-03 | Pablo Martinez | Literature review on resume extraction, FSTs, automata and DSLs | Assignment PDF, course follow-ups 1 to 4 | Base for 01-literature-review.md; sources checked by the team |
+| 2026-10-03 | Pablo Martinez | Propose two team profiles and the canonical token vocabulary | Assignment profiles and examples | Base for 02-profiles-and-vocabulary.md; profiles reviewed by the team |
