@@ -1,0 +1,2 @@
+Ada Wong
+Skills: Python, Pandas, NumPy, Scikit-learn, PySpark, SQL, Apache Airflow, Git, JS, JavaScript

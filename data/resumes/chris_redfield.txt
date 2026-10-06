@@ -1,0 +1,4 @@
+Chris Redfield
+5+ years of professional experience in cloud infrastructure
+Master's in Computer Science, 2019
+Skills: Bash, Linux, Docker, K8s, Jenkins, AWS, Terraform, Git, PySpark, Apache Airflow, Kafka, BigQuery, Python 3, Scala
