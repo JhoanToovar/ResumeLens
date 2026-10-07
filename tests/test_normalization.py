@@ -22,3 +22,23 @@ def test_unknown_word_is_rejected():
 
 def test_language_transducer_size():
     assert len(TRANSDUCERS["T_LANG"].states) == 13
+
+
+def test_n1_variants_from_assignment():
+    result = [normalize_skill(raw) for raw in ["JS", "React.js", "NodeJS", "Postgres"]]
+    assert result == ["JAVASCRIPT", "REACT", "NODE_JS", "POSTGRESQL"]
+
+
+def test_n2_different_separators():
+    for raw in ["Scikit-learn", "Scikit learn", "sklearn"]:
+        assert normalize_skill(raw) == "SCIKIT_LEARN"
+
+
+def test_n3_case_does_not_matter():
+    for raw in ["NUMPY", "numpy", "NumPy"]:
+        assert normalize_skill(raw) == "NUMPY"
+
+
+def test_frameworks_and_databases_sizes():
+    assert len(TRANSDUCERS["T_FW"].states) == 27
+    assert len(TRANSDUCERS["T_DB"].states) == 18
