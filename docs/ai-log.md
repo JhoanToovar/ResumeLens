@@ -3,6 +3,13 @@
 | 2026-10-04 | Jhon Escudero| Architecture diagram and module design (functions, inputs and outputs), adjusted to the tools used in class | Assignment PDF, 02-profiles-and-vocabulary.md, course follow-ups 1 to 4 | Base for 03-architecture.md; simplified and reviewed by the team |
 | 2026-10-05 | Jhoan Tovar | Regular expressions for each type of résumé information, tested on sample résumés | Assignment PDF, Follow-up 1 (regex), 02-profiles-and-vocabulary.md | Base for 04-regex.md; patterns tested and reviewed |
 | 2026-10-05 | Pablo Martinez | Finite-state transducers for skill normalization: 7-tuples, diagrams and sorting rule | Assignment PDF, Follow-up 3 (FST), 02-profiles-and-vocabulary.md, 04-regex.md | Base for 05-transducers.md; transducers tested in pyformlang and reviewed |
+
 | 2026-10-05 | Jhoan Tovar | Candidate profile DSL: EBNF, terminals and non-terminals, textX grammar and validation cases | Assignment PDF, Follow-up 4 (textX), textX slides (sessions 10 and 11), 02-profiles-and-vocabulary.md | Base for 07-grammar.md; grammar tested in textX and reviewed |
+
 | 2026-10-05 | Pablo Martinez | Candidate profile DSL: EBNF, terminals and non-terminals, textX grammar and validation cases | Assignment PDF, Follow-up 4 (textX), textX slides (sessions 10 and 11), 02-profiles-and-vocabulary.md | Base for 07-grammar.md; grammar tested in textX and reviewed |
+
 | 2026-10-05 | Edwin Escudero | Test case design for every stage and for the full pipeline | 03 to 07 design documents | Base for 08-test-cases.md; expected results checked against prototypes |
+
+| 2026-10-07 | Pablo Martinez | Implementation of profiles.py and normalization.py from 02 and 05, split into incremental commits with tests | 02 and 05 design documents, 08-test-cases.md, Follow-up 3 | Code reviewed and run; tests pass at every commit |
+
+| 2026-10-08 | Pablo Martinez | Implementation of recognition.py from 06-automata.md with tests | 06-automata.md, 08-test-cases.md, Follow-up 2 | Code reviewed and run; tests pass at every commit |
