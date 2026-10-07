@@ -4,6 +4,7 @@ Five transducers, one per skill type found in Stage 1.
 """
 import re
 from pyformlang.fst import FST
+from src.profiles import profile_order
 
 END = "#"   # end mark: the token is written only when the skill is over
 
@@ -144,7 +145,6 @@ def normalize_skill(raw):
     return None
 
 
-
 def normalize(skills):
     """Stage 2: list of skills as written -> list of canonical tokens without repeats"""
     tokens = []
@@ -165,3 +165,12 @@ def unrecognized(skills):
             result.append(raw)
     return result
 
+
+def sort_for_profile(tokens, profile):
+    """keeps the tokens of the profile, without repeats, in the profile order"""
+    order = profile_order(profile)
+    result = []
+    for token in order:
+        if token in tokens and token not in result:
+            result.append(token)
+    return result

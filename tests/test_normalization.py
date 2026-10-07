@@ -1,5 +1,5 @@
 # Stage 2 tests (docs/08-test-cases.md, section 3)
-from src.normalization import to_symbols, normalize, normalize_skill, unrecognized, TRANSDUCERS, VARIANTS
+from src.normalization import to_symbols, normalize, normalize_skill, unrecognized, sort_for_profile, TRANSDUCERS, VARIANTS
 
 
 def test_to_symbols():
@@ -74,3 +74,18 @@ def test_transducer_sizes_match_the_design():
 
 
 TOKENS = ["GIT", "NODE_JS", "JAVASCRIPT", "POSTGRESQL", "REACT"]
+
+
+TOKENS = ["GIT", "NODE_JS", "JAVASCRIPT", "POSTGRESQL", "REACT"]
+
+
+def test_s1_sorting_full_stack():
+    assert sort_for_profile(TOKENS, "FULL_STACK_DEVELOPER") == ["JAVASCRIPT", "REACT", "NODE_JS", "POSTGRESQL", "GIT"]
+
+
+def test_s2_filtering_other_profile():
+    assert sort_for_profile(TOKENS, "MACHINE_LEARNING_ENGINEER") == ["POSTGRESQL", "GIT"]
+
+
+def test_s3_no_tokens_of_the_profile():
+    assert sort_for_profile(["REACT", "NODE_JS"], "DEVOPS_ENGINEER") == []
