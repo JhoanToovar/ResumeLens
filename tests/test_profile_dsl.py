@@ -1,6 +1,6 @@
-# tests (docs/08-test-cases.md, section 5)
+# Stage 4 tests (docs/08-test-cases.md, section 5)
 import pytest
-from textx.exceptions import TextXSyntaxError
+from textx.exceptions import TextXSyntaxError, TextXSemanticError
 from src.profile_dsl import validate
 
 WEDNESDAY = '''
@@ -88,3 +88,9 @@ def test_d7_wrong_order():
 def test_d8_block_not_closed():
     with pytest.raises(TextXSyntaxError):
         validate(WEDNESDAY.rstrip()[:-1])
+
+
+def test_d9_matched_token_not_in_skills():
+    text = WEDNESDAY.replace("profile FULL_STACK_DEVELOPER : JAVASCRIPT", "profile FULL_STACK_DEVELOPER : TYPESCRIPT")
+    with pytest.raises(TextXSemanticError):
+        validate(text)
