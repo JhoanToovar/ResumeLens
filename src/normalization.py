@@ -46,6 +46,29 @@ VARIANTS = {
         "BIGQUERY": ["BigQuery", "Big Query"],
         "REDSHIFT": ["Redshift", "Amazon Redshift"],
     },
+    "T_TOOL": {
+        "GIT": ["Git"],
+        "DOCKER": ["Docker"],
+        "KUBERNETES": ["Kubernetes", "K8s"],
+        "JENKINS": ["Jenkins"],
+        "GITHUB_ACTIONS": ["GitHub Actions", "GH Actions"],
+        "GITLAB_CI": ["GitLab CI", "GitLab CI/CD"],
+        "AWS": ["AWS", "Amazon Web Services"],
+        "AZURE": ["Azure", "Microsoft Azure"],
+        "GCP": ["GCP", "Google Cloud", "Google Cloud Platform"],
+        "TERRAFORM": ["Terraform"],
+        "ANSIBLE": ["Ansible"],
+        "LINUX": ["Linux", "GNU/Linux", "Ubuntu"],
+        "AIRFLOW": ["Airflow", "Apache Airflow"],
+        "KAFKA": ["Kafka", "Apache Kafka"],
+        "HADOOP": ["Hadoop", "Apache Hadoop"],
+        "REST_API": ["REST", "RESTful", "REST API", "REST APIs", "RESTful API", "RESTful APIs"],
+        "GRAPHQL": ["GraphQL", "Graph QL"],
+    },
+    "T_OTHER": {
+        "MACHINE_LEARNING": ["Machine Learning", "Machine-Learning", "ML",
+                             "Machine Learning model development", "Machine-learning model development"],
+    },
 }
 
 
@@ -119,4 +142,26 @@ def normalize_skill(raw):
         if result:
             return result[0][0]
     return None
+
+
+
+def normalize(skills):
+    """Stage 2: list of skills as written -> list of canonical tokens without repeats"""
+    tokens = []
+    for raw in skills:
+        token = normalize_skill(raw)
+        if token is None:
+            print("Warning: skill not recognized:", raw)
+        elif token not in tokens:
+            tokens.append(token)
+    return tokens
+
+
+def unrecognized(skills):
+    """skills that no transducer accepts"""
+    result = []
+    for raw in skills:
+        if normalize_skill(raw) is None:
+            result.append(raw)
+    return result
 
