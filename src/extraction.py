@@ -3,6 +3,7 @@ Stage 1: extraction with regular expressions.
 One regex per type of information (see docs/04-regex.md).
 """
 import re
+import json
 
 # ---------- candidate data ----------
 NAME = r'^\s*([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?:\s+[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+){1,3})\s*$'
@@ -23,11 +24,16 @@ RIGHT = r'(?!\w)'      # not followed by a letter or digit
 FRAMEWORKS = LEFT + r'(React(?:\.?\s?JS)?|Angular(?:\.?JS)?|Vue(?:\.?JS)?|Node(?:\.?\s?JS)?|Express(?:\.?JS)?|Django|Flask|Spring[\s-]?Boot|Pandas|NumPy|Scikit[\s-]?learn|sklearn|Tensor\s?Flow|TF2|Py\s?Torch|Torch|Keras|PySpark|Apache\s+Spark|Spark)' + RIGHT
 DATABASES = LEFT + r'(PostgreSQL|Postgres|Postgre|PSQL|My\s?SQL|(?:MS\s+)?SQL\s+Server|MSSQL|SQLite3?|Mongo\s?DB|Mongo|Redis|Snowflake|Big\s?Query|(?:Amazon\s+)?Redshift)' + RIGHT
 TOOLS = LEFT + r'(GitHub\s+Actions|GH\s+Actions|GitLab\s+CI(?:/CD)?|Git|Docker|Kubernetes|K8s|Jenkins|AWS|Amazon\s+Web\s+Services|(?:Microsoft\s+)?Azure|GCP|Google\s+Cloud(?:\s+Platform)?|Terraform|Ansible|GNU/Linux|Linux|Ubuntu|(?:Apache\s+)?Airflow|(?:Apache\s+)?Kafka|(?:Apache\s+)?Hadoop|RESTful(?:\s+APIs?)?|REST(?:\s+APIs?)?|Graph\s?QL)' + RIGHT
+OTHER = LEFT + r'(Machine[\s-]Learning(?:\s+model\s+development)?|ML)' + RIGHT
+LANGUAGES = LEFT + r'(JavaScript|ECMAScript|JS|TypeScript|TS|Python\s?3|Python|Java|Scala|Bash|Shell(?:\s+scripting)?|T-SQL|PL/SQL|SQL)' + RIGHT
 
+# order matters: languages go last because JS and SQL hide inside other names
 SKILL_PATTERNS = [
     ("frameworks", FRAMEWORKS),
     ("databases", DATABASES),
     ("tools", TOOLS),
+    ("other", OTHER),
+    ("languages", LANGUAGES),
 ]
 
 
@@ -82,3 +88,9 @@ def extract(text):
         data["skills"] += data["skills_by_type"][name]
 
     return data
+
+
+def save_extraction(data, path):
+    """keeps the extracted information in a JSON file"""
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)

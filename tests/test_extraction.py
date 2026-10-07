@@ -44,3 +44,18 @@ def test_e7_non_technical_skills():
 
 def test_e8_no_skills_section():
     assert extract(R8)["skills"] == []
+
+
+def test_e1_skills_from_assignment():
+    assert extract(R1)["skills"] == ["React.js", "NodeJS", "Postgres", "Git", "JS"]
+
+
+def test_e5_short_names_inside_longer_ones():
+    skills = extract("Skills: React JS, My SQL, SQL Server, T-SQL")["skills"]
+    assert sorted(skills) == sorted(["React JS", "My SQL", "SQL Server", "T-SQL"])
+    assert "JS" not in skills
+    assert "SQL" not in skills
+
+
+def test_e6_java_and_javascript():
+    assert sorted(extract("Skills: Java, JavaScript")["skills"]) == ["Java", "JavaScript"]
