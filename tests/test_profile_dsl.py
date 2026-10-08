@@ -1,7 +1,7 @@
 # Stage 4 tests (docs/08-test-cases.md, section 5)
 import pytest
 from textx.exceptions import TextXSyntaxError, TextXSemanticError
-from src.profile_dsl import validate
+from src.profile_dsl import validate, to_dsl
 
 WEDNESDAY = '''
 candidate "Wednesday Addams" {
@@ -94,3 +94,14 @@ def test_d9_matched_token_not_in_skills():
     text = WEDNESDAY.replace("profile FULL_STACK_DEVELOPER : JAVASCRIPT", "profile FULL_STACK_DEVELOPER : TYPESCRIPT")
     with pytest.raises(TextXSemanticError):
         validate(text)
+
+
+def test_to_dsl_writes_a_valid_profile():
+    data = {"name": "Wednesday Addams", "email": None, "phone": None, "urls": [],
+            "education": [], "jobs": [],
+            "experience": [{"years": 3, "description": "developing web applications"}]}
+    tokens = ["REACT", "NODE_JS", "POSTGRESQL", "GIT", "JAVASCRIPT"]
+    results = {"FULL_STACK_DEVELOPER": "ACCEPTED", "MACHINE_LEARNING_ENGINEER": "REJECTED",
+               "DEVOPS_ENGINEER": "REJECTED", "DATA_ENGINEER": "REJECTED"}
+    model = validate(to_dsl(data, tokens, results))
+    assert model.accepted.profiles[0].matched == ["JAVASCRIPT", "REACT", "NODE_JS", "POSTGRESQL", "GIT"]
