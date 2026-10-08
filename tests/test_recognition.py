@@ -1,5 +1,5 @@
 # Stage 3 tests (docs/08-test-cases.md, section 4)
-from src.recognition import recognize, automaton_rows, AUTOMATA
+from src.recognition import recognize, classify, automaton_rows, AUTOMATA
 
 FS = "FULL_STACK_DEVELOPER"
 ML = "MACHINE_LEARNING_ENGINEER"
@@ -41,3 +41,29 @@ def test_rows_match_the_design():
     rows, finals = automaton_rows("FULL_STACK_DEVELOPER")
     assert len(rows) == 12
     assert finals == ["q6"]
+
+
+def test_a6():
+    assert recognize("BASH LINUX DOCKER GITHUB_ACTIONS AZURE GIT".split(), DO)
+
+
+def test_a7_no_ci_cd():
+    assert not recognize("LINUX DOCKER KUBERNETES AWS GIT".split(), DO)
+
+
+def test_a8():
+    assert recognize("SCALA POSTGRESQL HADOOP AIRFLOW AWS GIT".split(), DE)
+
+
+def test_a9_no_sql():
+    assert not recognize("PYTHON APACHE_SPARK AIRFLOW KAFKA BIGQUERY GIT".split(), DE)
+
+
+def test_a10_empty_sequence():
+    for profile in AUTOMATA:
+        assert not recognize([], profile)
+
+
+def test_classify_sorts_before_recognizing():
+    result = classify(["GIT", "NODE_JS", "JAVASCRIPT", "POSTGRESQL", "REACT"])
+    assert result == {FS: "ACCEPTED", ML: "REJECTED", DO: "REJECTED", DE: "REJECTED"}

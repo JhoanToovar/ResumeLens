@@ -4,6 +4,7 @@ One DFA per profile, built from the profile table.
 """
 from pyformlang.finite_automaton import DeterministicFiniteAutomaton
 from src.profiles import PROFILES
+from src.normalization import sort_for_profile
 
 
 def automaton_rows(profile):
@@ -54,3 +55,14 @@ def recognize(sequence, profile):
     """True if the automaton of the profile accepts the sorted sequence"""
     return AUTOMATA[profile].accepts(sequence)
 
+
+def classify(tokens):
+    """Stage 3: ACCEPTED or REJECTED for each of the four profiles"""
+    results = {}
+    for profile in PROFILES:
+        sequence = sort_for_profile(tokens, profile)
+        if recognize(sequence, profile):
+            results[profile] = "ACCEPTED"
+        else:
+            results[profile] = "REJECTED"
+    return results
