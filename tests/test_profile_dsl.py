@@ -1,7 +1,7 @@
 # Stage 4 tests (docs/08-test-cases.md, section 5)
 import pytest
 from textx.exceptions import TextXSyntaxError, TextXSemanticError
-from src.profile_dsl import validate, to_dsl
+from src.profile_dsl import validate, to_html, to_dsl
 
 WEDNESDAY = '''
 candidate "Wednesday Addams" {
@@ -105,3 +105,11 @@ def test_to_dsl_writes_a_valid_profile():
                "DEVOPS_ENGINEER": "REJECTED", "DATA_ENGINEER": "REJECTED"}
     model = validate(to_dsl(data, tokens, results))
     assert model.accepted.profiles[0].matched == ["JAVASCRIPT", "REACT", "NODE_JS", "POSTGRESQL", "GIT"]
+
+
+def test_d10_html_output():
+    page = to_html(validate(WEDNESDAY))
+    assert "Wednesday Addams" in page
+    for token in ["JAVASCRIPT", "REACT", "NODE_JS", "POSTGRESQL", "GIT"]:
+        assert token in page
+    assert "FULL_STACK_DEVELOPER" in page
