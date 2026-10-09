@@ -42,3 +42,37 @@ def test_p10_missing_file():
         assert False
     except FileNotFoundError:
         assert True
+
+
+def test_p3_leon():
+    result = run(resume("leon_kennedy"))
+    assert len(result["tokens"]) == 15
+    assert "HTML" not in result["data"]["skills"]
+    assert accepted(result) == [FS]
+
+
+def test_p4_chris():
+    result = run(resume("chris_redfield"))
+    assert len(result["tokens"]) == 14
+    assert accepted(result) == [DO]
+
+
+def test_p5_catherine():
+    result = run(resume("catherine_halsey"))
+    assert len(result["tokens"]) == 8
+    assert accepted(result) == [DE]
+
+
+def test_p6_ada_two_profiles():
+    result = run(resume("ada_wong"))
+    assert len(result["tokens"]) == 9
+    assert result["tokens"].count("JAVASCRIPT") == 1
+    assert accepted(result) == [ML, DE]
+
+
+def test_p7_p8_no_skills():
+    for name in ["jill_valentine", "avery_johnson"]:
+        result = run(resume(name))
+        assert result["tokens"] == []
+        assert accepted(result) == []
+        assert result["model"].accepted.profiles == []
