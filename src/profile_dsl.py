@@ -1,5 +1,5 @@
 """
-Stage 4: candidate profile DSL with textX (see docs/07-grammar.md).
+Candidate profile DSL with textX.
 """
 import os
 import html

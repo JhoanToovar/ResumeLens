@@ -2,13 +2,13 @@
 
 Team: Jhoan Tovar, Pablo, Edwin. Deadline: October 11, 2026.
 
-Each member owns his part from design to code, so the commits show who built what. Stages 2 and 3 stay together because both are built with pyformlang and the automata read exactly what the transducers write. The repository needs at least 10 meaningful commits with 2 hours or more between consecutive commits. The order below already respects that if each person pushes on the day assigned.
+Each member owns his part from design to code, so the commits show who built what. Stages 2 and 3 stay together because both are built with pyformlang and the automata read exactly what the transducers write. The repository needs at least 10 meaningful commits with 2 hours or more between consecutive commits, and each member must reach at least 10 commits of his own over the whole project. The order below already respects that if each person pushes on the day assigned.
 
 ## Ownership
 
 | Member | Stages | Also in charge of |
 |---|---|---|
-| Jhoan | Stage 1: regular expressions. Stage 4: DSL with textX and the visualization | Repository setup |
+| Jhoan | Stage 1: regular expressions. Stage 4: DSL with textX and the visualization | Repository setup, Streamlit page (`app.py`) |
 | Pablo | Stage 2: finite-state transducers and the per-profile sorting. Stage 3: finite automata for the four profiles | Literature review, profiles |
 | Edwin | Architecture and module design, test case design | Console program that runs the four stages (`main.py`), research poster |
 
@@ -33,6 +33,9 @@ The presentation is shared. Each member explains the part he built.
 | 13 | Edwin | `main.py`: console program that runs the four stages |
 | 14 | Edwin | Research poster |
 | 15 | All | README final version, AI log, presentation |
+| 16 | Jhoan | `app.py`: simple Streamlit page that runs the four stages, with README and architecture updates |
+
+Rows 9 to 13 are not single commits. Each member uploads his Python files in several smaller commits (one function, one group of regular expressions or one transducer at a time, each with its tests), interleaved with the commits of the other members, so that every member reaches at least 10 commits in total over the whole project.
 
 ## Rules
 

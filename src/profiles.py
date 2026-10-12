@@ -1,5 +1,4 @@
 """
-The four profiles of docs/02-profiles-and-vocabulary.md.
 Each profile is a list of groups in order: (group name, tokens, rule).
 rule is "required", "at_least_one" or "optional".
 """

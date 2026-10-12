@@ -16,7 +16,7 @@ flowchart LR
 
 Only the skills go through the transducers and the automata. Name, email, education and experience go straight from Stage 1 to Stage 4, since there is nothing to normalize in an email address.
 
-`main.py` runs the four stages in this order and prints what each one produced.
+`main.py` runs the four stages in this order and prints what each one produced. `app.py` calls the same `run()` function from `main.py` and shows each stage in a Streamlit web page.
 
 ## 2. Modules
 
@@ -28,6 +28,7 @@ Only the skills go through the transducers and the automata. Name, email, educat
 | `src/recognition.py` | Stage 3. One automaton per profile | `pyformlang` | Pablo |
 | `src/profile_dsl.py` and `src/resumelens.tx` | Stage 4. Grammar of the candidate profile, validation and HTML output | `textX` | Jhoan |
 | `main.py` | Console program: reads a résumé file and runs the four stages | none | Edwin |
+| `app.py` | Streamlit web page: choose or paste a résumé and see the four stages and the HTML page | `streamlit` | Jhoan |
 
 ## 3. Functions (inputs and outputs)
 
@@ -98,6 +99,7 @@ What the automata receive in Stage 3 after sorting:
 ```
 ResumeLens/
 ├── main.py
+├── app.py
 ├── src/          the five Python files and the grammar
 ├── tests/        one test file per stage
 ├── data/         sample résumés in .txt
@@ -108,5 +110,5 @@ ResumeLens/
 ## 6. Decisions
 
 1. One file per stage, so each stage can be tested alone by giving it what the previous stage would return.
-2. The interface is a console program. It shows the result of every stage, which is what the presentation needs.
+2. There are two interfaces on top of the same `run()` function: a console program (`main.py`) and a simple Streamlit page (`app.py`). Both show the result of every stage; the page also shows the HTML output without opening a file. Neither one adds logic, so the tests of the stages cover both.
 3. If something fails the program does not stop: unknown skills are printed as warnings, and a DSL text that breaks the grammar is reported with the textX error.

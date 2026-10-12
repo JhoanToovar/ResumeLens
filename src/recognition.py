@@ -8,17 +8,18 @@ from src.normalization import sort_for_profile
 
 
 def automaton_rows(profile):
-    """transitions (state, tokens, next state) and final states of a profile.
-    q_i means 'groups 1 to i are done'."""
+    """transitions (state, tokens, next state) and final states of a profile."""
     groups = PROFILES[profile]
     k = len(groups)
     rows = []
     for i in range(k + 1):
         # from q_i we can read a token of group j if every group between them is optional
+
         for j in range(i + 1, k + 1):
             rows.append(("q" + str(i), groups[j - 1][1], "q" + str(j)))
             if groups[j - 1][2] != "optional":
                 break
+            
         # a group with more than one token gets a loop on its own state
         if i > 0 and len(groups[i - 1][1]) > 1:
             rows.append(("q" + str(i), groups[i - 1][1], "q" + str(i)))

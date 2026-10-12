@@ -1,5 +1,5 @@
 """
-Stage 2: normalization with finite-state transducers (see docs/05-transducers.md).
+Normalization with finite-state transducers.
 Five transducers, one per skill type found in Stage 1.
 """
 import re
@@ -113,11 +113,11 @@ def transitions(table):
             next_state = state_name(words[:i + 1], sequences)
             if (state, words[i]) not in seen:
                 seen.append((state, words[i]))
-                rows.append((state, words[i], next_state, []))          # writes epsilon
+                rows.append((state, words[i], next_state, []))# writes epsilon
             state = next_state
         if (state, END) not in seen:
             seen.append((state, END))
-            rows.append((state, END, "qf", [token]))                    # writes the token
+            rows.append((state, END, "qf", [token]))# writes the token
     return rows
 
 
@@ -146,7 +146,7 @@ def normalize_skill(raw):
 
 
 def normalize(skills):
-    """Stage 2: list of skills as written -> list of canonical tokens without repeats"""
+    """list of skills as written -> list of canonical tokens without repeats"""
     tokens = []
     for raw in skills:
         token = normalize_skill(raw)
