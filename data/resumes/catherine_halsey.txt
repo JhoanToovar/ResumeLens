@@ -1,0 +1,5 @@
+Catherine Halsey
+catherine.halsey@oni.example.org
+M.Sc. in Data Science, Universidad del Valle, 2021
+Data Engineer at Office of Naval Intelligence (2021 - present)
+Skills: Python, SQL, PySpark, Apache Airflow, Kafka, Snowflake, AWS, Git

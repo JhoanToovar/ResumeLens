@@ -1,0 +1,4 @@
+pyformlang
+textX
+pytest
+streamlit

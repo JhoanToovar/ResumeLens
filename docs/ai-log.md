@@ -1,8 +1,19 @@
+# AI Usage Log
+
+Tool: Claude (claude.ai)
+
+| Date | Member | Prompt (summary) | Own content provided | How the output was used |
+|---|---|---|---|---|
 | 2026-10-03 | Pablo Martinez | Literature review on resume extraction, FSTs, automata and DSLs | Assignment PDF, course follow-ups 1 to 4 | Base for 01-literature-review.md; sources checked by the team |
 | 2026-10-03 | Pablo Martinez | Propose two team profiles and the canonical token vocabulary | Assignment profiles and examples | Base for 02-profiles-and-vocabulary.md; profiles reviewed by the team |
-| 2026-10-04 | Jhon Escudero| Architecture diagram and module design (functions, inputs and outputs), adjusted to the tools used in class | Assignment PDF, 02-profiles-and-vocabulary.md, course follow-ups 1 to 4 | Base for 03-architecture.md; simplified and reviewed by the team |
+| 2026-10-04 | Jhon Escudero | Architecture diagram and module design (functions, inputs and outputs), adjusted to the tools used in class | Assignment PDF, 02-profiles-and-vocabulary.md, course follow-ups 1 to 4 | Base for 03-architecture.md; simplified and reviewed by the team |
 | 2026-10-05 | Jhoan Tovar | Regular expressions for each type of résumé information, tested on sample résumés | Assignment PDF, Follow-up 1 (regex), 02-profiles-and-vocabulary.md | Base for 04-regex.md; patterns tested and reviewed |
 | 2026-10-05 | Pablo Martinez | Finite-state transducers for skill normalization: 7-tuples, diagrams and sorting rule | Assignment PDF, Follow-up 3 (FST), 02-profiles-and-vocabulary.md, 04-regex.md | Base for 05-transducers.md; transducers tested in pyformlang and reviewed |
 | 2026-10-05 | Jhoan Tovar | Candidate profile DSL: EBNF, terminals and non-terminals, textX grammar and validation cases | Assignment PDF, Follow-up 4 (textX), textX slides (sessions 10 and 11), 02-profiles-and-vocabulary.md | Base for 07-grammar.md; grammar tested in textX and reviewed |
-| 2026-10-05 | Pablo Martinez | Candidate profile DSL: EBNF, terminals and non-terminals, textX grammar and validation cases | Assignment PDF, Follow-up 4 (textX), textX slides (sessions 10 and 11), 02-profiles-and-vocabulary.md | Base for 07-grammar.md; grammar tested in textX and reviewed |
-| 2026-10-05 | Edwin Escudero | Test case design for every stage and for the full pipeline | 03 to 07 design documents | Base for 08-test-cases.md; expected results checked against prototypes |
+| 2026-10-05 | Jhon Escudero | Test case design for every stage and for the full pipeline | 03 to 07 design documents | Base for 08-test-cases.md; expected results checked against prototypes |
+| 2026-10-07 | Pablo Martinez | Implementation of profiles.py and normalization.py from 02 and 05, split into incremental commits with tests | 02 and 05 design documents, 08-test-cases.md, Follow-up 3 | Code reviewed and run; tests pass at every commit |
+| 2026-10-08 | Pablo Martinez | Implementation of recognition.py from 06-automata.md with tests | 06-automata.md, 08-test-cases.md, Follow-up 2 | Code reviewed and run; tests pass at every commit |
+| 2026-10-0 | Jhoan Tovar | Implementation of extraction.py from 04-regex.md, split into incremental commits with tests | 04-regex.md, 08-test-cases.md, Follow-up 1 | Code reviewed and run; tests pass at every commit |
+| 2026-10-10 | Jhoan Tovar | Implementation of the textX grammar and profile_dsl.py from 07-grammar.md with tests | 07-grammar.md, 08-test-cases.md, Follow-up 4 | Code reviewed and run; tests pass at every commit |
+| 2026-10-11 | Jhon Escudero | Console program main.py and full pipeline tests | 03-architecture.md, 08-test-cases.md | Program run with the 8 sample résumés; all tests pass |
+| 2026-10-12 | Jhoan Tovar | Simple Streamlit page (app.py) on top of run() from main.py, plus README and architecture updates | main.py, README.md, 03-architecture.md, 00-work-plan.md | Page tested with the 8 sample résumés and with pasted text; decided to keep the console program too |

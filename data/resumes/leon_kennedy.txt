@@ -1,0 +1,5 @@
+Leon Kennedy
+leon.kennedy@rpd.example.com | +57 300 123 4567 | linkedin.com/in/leon-kennedy
+B.Sc. in Systems Engineering, Universidad Icesi, 2022
+Backend Developer at Umbrella Corporation (2022 - present)
+Skills: TypeScript, React JS, Node.js, Express.js, My SQL, SQL Server, MongoDB, REST APIs, Git, GitHub Actions, Docker, Java, JavaScript, T-SQL, ML, HTML

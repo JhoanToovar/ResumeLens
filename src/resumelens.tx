@@ -1,0 +1,62 @@
+/*
+  ResumeLens candidate profile language 
+*/
+
+Candidate:
+    'candidate' name=STRING '{'
+        contact=Contact?
+        education*=Education
+        experience*=Experience
+        skills=Skills
+        accepted=Accepted
+    '}'
+;
+
+Contact:
+    'contact' '{'
+        ('email' email=Email)?
+        ('phone' phone=Phone)?
+        ('url' urls=Url)*
+    '}'
+;
+
+Education:
+    'education' '{'
+        'degree' degree=STRING
+        ('institution' institution=STRING)?
+        ('year' year=Year)?
+    '}'
+;
+
+Experience:
+    'experience' '{'
+        ('role' role=STRING)?
+        ('company' company=STRING)?
+        ('years' years=INT)?
+        ('period' start=Year '-' end=EndYear)?
+        ('description' description=STRING)?
+    '}'
+;
+
+Skills:
+    'skills' '{' tokens*=Token[','] '}'
+;
+
+Accepted:
+    'accepted' '{' profiles*=ProfileResult '}'
+;
+
+ProfileResult:
+    'profile' profile=ProfileName ':' matched+=Token[',']
+;
+
+ProfileName:
+    'FULL_STACK_DEVELOPER' | 'MACHINE_LEARNING_ENGINEER' | 'DEVOPS_ENGINEER' | 'DATA_ENGINEER'
+;
+
+Token: /[A-Z][A-Z0-9_]*/;
+Email: /[\w.+-]+@[\w-]+(\.[\w-]+)*\.[A-Za-z]{2,}/;
+Phone: /\+?\d[\d ()-]{6,18}\d/;
+Url: /(https?:\/\/)?(www\.)?[\w-]+(\.[\w-]+)+(\/[\w.-]+)*/;
+Year: /(19|20)\d\d/;
+EndYear: Year | 'present';
