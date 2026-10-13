@@ -36,3 +36,4 @@ The extracted data (JSON) and the HTML page of each candidate are written to `ou
 - `tests/` tests for every stage and for the full pipeline
 - `data/resumes/` sample résumés
 - `docs/` design documents and AI usage log
+- `docs/ResumeLens_poster.pdf` project poster
